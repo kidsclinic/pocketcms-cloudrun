@@ -1,27 +1,19 @@
 FROM alpine:latest
 
-ARG PB_VERSION=0.22.13
+ARG PCMS_VERSION=0.1.6
 
 RUN apk add --no-cache \
     unzip \
     ca-certificates
 
 # download and unzip PocketBase
-ADD https://github.com/pocketbase/pocketbase/releases/download/v${PB_VERSION}/pocketbase_${PB_VERSION}_linux_amd64.zip /tmp/pb.zip
+ADD https://github.com/parkuman/pocketcms/releases/download/v${PCMS_VERSION}/pocketcms_${PCMS_VERSION}_linux_amd64.zip /tmp/pb.zip
 RUN unzip /tmp/pb.zip -d /pb/
-
-# uncomment to copy the local pb_migrations dir into the image
-# COPY ./pb_migrations /cloud/storage/pb_migrations
-
-# uncomment to copy the local pb_hooks dir into the image
-# COPY ./pb_hooks /cloud/storage/pb_hooks
-
-# uncomment to copy the local pb_public dir into the image
-# COPY ./pb_public /cloud/storage/pb_public
 
 ENV HOST 0.0.0.0
 ENV PORT 8080
+ENV GCS_MOUNT /cloud/storage
 
 # start PocketBase
 EXPOSE 8080
-CMD ["/pb/pocketbase", "serve", "--http=0.0.0.0:8080", "--dir=/cloud/storage/pb_data", "--publicDir=/cloud/storage/pb_public", "--hooksDir=/cloud/storage/pb_hooks"]
+CMD ["/bin/sh", "-c", "/pb/pocketbase serve --http=0.0.0.0:8080 --dir=${GCS_MOUNT}/pb_data --publicDir=${GCS_MOUNT}/pb_public --hooksDir=${GCS_MOUNT}/pb_hooks"]

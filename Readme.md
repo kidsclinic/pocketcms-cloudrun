@@ -1,8 +1,6 @@
-# PocketBase on CloudRun
+# PocketCMS on CloudRun
 
-It is now possible to run [PocketBase](https://pocketbase.io/) on Google [CloudRun](https://cloud.google.com/run?hl=en) because of the recent support for [mounting volumes](https://cloud.google.com/run/docs/configuring/services/cloud-storage-volume-mounts). This is a guide on how to deploy PocketBase on Google Cloud Run.
-
-> Disclaimer: This is not an official Google project.
+Run [PocketBase](https://pocketbase.io/) and therefore PocketCMS on Google [CloudRun](https://cloud.google.com/run?hl=en) because by [mounting volumes](https://cloud.google.com/run/docs/configuring/services/cloud-storage-volume-mounts). This is a guide on how to deploy PocketCMS on Google Cloud Run.
 
 ## Features
 
@@ -56,6 +54,7 @@ Deploy following the guide on the [official documentation](https://cloud.google.
   - Read-only: `false`
 
 ##### Container(s)
+
 - Startup CPU boost is `enabled`
 - Volume mount (s)
   - Volume name: `remote-storage`
