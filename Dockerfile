@@ -17,4 +17,4 @@ ENV PORT 8080
 
 # start PocketBase
 EXPOSE 8080
-CMD ["/bin/sh", "-c", "/pb/pocketbase serve --http=0.0.0.0:8080 --dir=${GCS_MOUNT}/pb_data --publicDir=${GCS_MOUNT}/pb_public --hooksDir=${GCS_MOUNT}/pb_hooks"]
+CMD ["/bin/sh", "-c", "/pb/pocketcms serve --http=0.0.0.0:8080 --dir=${GCS_MOUNT}/pb_data --publicDir=${GCS_MOUNT}/pb_public --hooksDir=${GCS_MOUNT}/pb_hooks"]
