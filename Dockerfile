@@ -1,6 +1,6 @@
 FROM alpine:latest
 
-ARG PCMS_VERSION=0.1.6
+ARG PCMS_VERSION=0.1.7
 
 RUN apk add --no-cache \
     unzip \
