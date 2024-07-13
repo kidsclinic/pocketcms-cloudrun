@@ -10,9 +10,10 @@ RUN apk add --no-cache \
 ADD https://github.com/parkuman/pocketcms/releases/download/v${PCMS_VERSION}/pocketcms_${PCMS_VERSION}_linux_amd64.zip /tmp/pb.zip
 RUN unzip /tmp/pb.zip -d /pb/
 
+# default value, can be changed in environment variables in Google Cloud UI
+ENV GCS_MOUNT /cloud/storage
 ENV HOST 0.0.0.0
 ENV PORT 8080
-ENV GCS_MOUNT /cloud/storage
 
 # start PocketBase
 EXPOSE 8080
